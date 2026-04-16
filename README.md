@@ -1,7 +1,7 @@
 # FIAP Tech Challenge - Fase 3
 ## ✈️ Análise e Previsão de Atrasos de Voos com Machine Learning
 
-Projeto da fase 3 da pós em Machine Learning Engineering focado na análise exploratória e modelagem preditiva de atrasos de voos nos Estados Unidos, utilizando técnicas de Machine Learning supervisionado.
+Projeto da fase 3 da pós em Machine Learning Engineering focado na análise exploratória e modelagem preditiva de atrasos de voos nos Estados Unidos, utilizando técnicas de Machine Learning supervisionado e não supervisionado.
 
 ## 🎯 Objetivo do Projeto
 
@@ -11,7 +11,8 @@ Desenvolver um pipeline completo de análise de dados capaz de:
 - Identificar padrões e fatores relacionados a atrasos
 - Tratar valores ausentes de forma adequada
 - Construir modelos de Machine Learning para previsão de atrasos
-- Avaliar e comparar diferentes algoritmos
+- Aplicar técnicas de aprendizado não supervisionado para identificar padrões ocultos
+- Avaliar e interpretar os resultados
 
 ## 📊 Base de Dados
 
@@ -38,12 +39,13 @@ Essas bases foram integradas para enriquecer a análise.
   - dia da semana
   - horário
 
+---
+
 ### 🔹 3. Tratamento de Dados
 - Remoção de voos cancelados
 - Tratamento de valores ausentes com base no contexto
-- Criação das variáveis alvo:
+- Criação da variável alvo:
   - `IS_DELAYED` (classificação)
-  - `ARRIVAL_DELAY` (regressão)
 
 ### 🔹 4. Modelagem Supervisionada
 
@@ -54,12 +56,18 @@ Modelos utilizados:
 - Logistic Regression
 - Decision Tree
 
-#### 📌 Regressão
-Objetivo: prever o tempo de atraso do voo (em minutos).
+### 🔹 5. Modelagem Não Supervisionada
 
-Modelos utilizados:
-- Linear Regression (baseline)
-- (opcional: Decision Tree Regressor / Random Forest Regressor)
+#### 📌 Clusterização (K-Means)
+
+Objetivo: identificar padrões e agrupar voos com características semelhantes.
+
+Etapas realizadas:
+- Seleção de variáveis numéricas relevantes
+- Padronização dos dados
+- Definição do número de clusters (Elbow Method)
+- Aplicação do algoritmo K-Means
+- Redução de dimensionalidade com PCA para visualização
 
 ## 📈 Avaliação dos Modelos
 
@@ -70,7 +78,21 @@ Modelos utilizados:
 - F1-score
 - Matriz de confusão
 
-### Regressão:
-- MAE (Mean Absolute Error)
-- RMSE (Root Mean Squared Error)
-- R² Score
+### Clusterização:
+- Análise visual dos clusters (PCA)
+- Interpretação dos grupos formados
+
+## 📌 Principais Insights
+
+- Atrasos variam significativamente entre companhias aéreas
+- Alguns aeroportos apresentam maior incidência de atrasos
+- Horários ao longo do dia influenciam a probabilidade de atraso
+- A clusterização revelou diferentes perfis de voos com comportamentos distintos
+
+## 📌 Conclusão
+
+O projeto demonstrou que os atrasos de voos não ocorrem de forma aleatória, estando associados a fatores como companhia aérea, horário e características operacionais.
+
+A modelagem supervisionada mostrou que é possível prever a ocorrência de atrasos com base em dados históricos, enquanto a clusterização permitiu identificar diferentes perfis de voos, evidenciando padrões ocultos nos dados.
+
+Essas abordagens complementares contribuem para uma compreensão mais completa do problema, podendo apoiar análises e decisões no contexto operacional.
